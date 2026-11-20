@@ -145,3 +145,97 @@ private fun BodyDetailCatatanSiswa(
         }
     }
 }
+
+@Composable
+fun DetailDataSiswa(
+    siswa: Siswa,
+    modifier: Modifier = Modifier
+) {
+    Card(
+        modifier = modifier,
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer,
+            contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+        )
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(dimensionResource(id = R.dimen.padding_medium)),
+            verticalArrangement = Arrangement.spacedBy(
+                dimensionResource(id = R.dimen.padding_medium)
+            )
+        ) {
+            BarisDetailData(
+                labelResId = R.string.nama,
+                itemData = siswa.nama,
+                modifier = Modifier.padding(
+                    horizontal = dimensionResource(
+                        id = R.dimen.padding_medium
+                    )
+                )
+            )
+
+            BarisDetailData(
+                labelResId = R.string.alamat,
+                itemData = siswa.alamat,
+                modifier = Modifier.padding(
+                    horizontal = dimensionResource(
+                        id = R.dimen.padding_medium
+                    )
+                )
+            )
+
+            BarisDetailData(
+                labelResId = R.string.telpon,
+                itemData = siswa.telpon,
+                modifier = Modifier.padding(
+                    horizontal = dimensionResource(
+                        id = R.dimen.padding_medium
+                    )
+                )
+            )
+        }
+    }
+}
+
+@Composable
+private fun BarisDetailData(
+    @StringRes labelResId: Int,
+    itemData: String,
+    modifier: Modifier = Modifier
+) {
+    Row(modifier = modifier) {
+        Text(stringResource(labelResId))
+        Spacer(modifier = Modifier.weight(1f))
+        Text(text = itemData, fontWeight = FontWeight.Bold)
+    }
+}
+
+@Composable
+private fun DeleteConfirmationDialog(
+    onDeleteConfirm: () -> Unit,
+    onDeleteCancel: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    AlertDialog(
+        onDismissRequest = { /* Do nothing */ },
+        title = {
+            Text(stringResource(R.string.attention))
+        },
+        text = {
+            Text(stringResource(R.string.tanya))
+        },
+        modifier = modifier,
+        dismissButton = {
+            TextButton(onClick = onDeleteCancel) {
+                Text(stringResource(R.string.no))
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDeleteConfirm) {
+                Text(stringResource(R.string.yes))
+            }
+        }
+    )
+}
