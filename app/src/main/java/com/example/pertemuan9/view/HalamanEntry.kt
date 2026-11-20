@@ -24,7 +24,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.pertemuan9.R
-import com.example.pertemuan9.view.uicontroller.DestinasiNavigasi
+import com.example.pertemuan9.view.route.DestinasiNavigasi
 import com.example.pertemuan9.view.uicontroller.SiswaTopAppBar
 import com.example.pertemuan9.viewmodel.DetailSiswa
 import com.example.pertemuan9.viewmodel.EntryViewModel
